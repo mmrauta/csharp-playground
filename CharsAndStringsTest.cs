@@ -19,13 +19,6 @@ namespace csharp_playground
         }
 
         [Fact]
-        public void GetArrayOfCharsFromString()
-        {
-            var arrayOfLetters = "my dog".ToCharArray();
-            Assert.Equal(new []{ 'm','y',' ','d','o','g' }, arrayOfLetters);
-        }
-
-        [Fact]
         public void CheckIfStringContainsSomeChars()
         {
             var text = "my dog";
