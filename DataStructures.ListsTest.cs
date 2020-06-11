@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -73,6 +73,5 @@ namespace csharp_playground.DataStructures
             Action invalidExecution = () => list.RemoveAt(1);
             Assert.Throws<ArgumentOutOfRangeException>(invalidExecution);
         }
-
     }
 }

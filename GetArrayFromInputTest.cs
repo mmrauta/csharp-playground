@@ -42,5 +42,30 @@ namespace csharp_playground
             Assert.Equal(new[] { '1','0', '0', '0', '0', '0', '1' }, arrayOfBitsAsChars);
             Assert.Equal(new[] { 1, 0, 0, 0, 0, 0, 1}, arrayOfBitsAsIntegers);
         }
+
+        [Fact]
+        public void EmptyArrayHasNoElements()
+        {
+            var array = new int[] { };      // creating empty array (of size 0) -> this is equivalent of: new int[0]
+            Assert.Empty(array);
+            Assert.Equal(0, array.Length);
+        }
+
+        [Fact]
+        public void EmptyArrayHasOElements()
+        {
+            var array = new int[2];         // creating array (of size 2) - > each element has the default value of the type it's storing
+            Assert.Equal(default, array[0]);
+            Assert.Equal(0, array[1]);          // default(int) == 0
+            Assert.Equal(2, array.Length);
+        }
+
+        [Fact]
+        public void ThrowsExceptionWhenTryingToInsertElementToAmptyArray()
+        {
+            var array = new int[] { };
+            Action invalidExecution = () => array[0] = 1;
+            Assert.Throws<IndexOutOfRangeException>(invalidExecution);
+        }
     }
 }
