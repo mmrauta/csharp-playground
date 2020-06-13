@@ -1,7 +1,7 @@
 ﻿using Algorithms.Grids;
 using Xunit;
 
-namespace csharp_playground.Algorithms
+namespace csharp_playground.AlgorithmsTests
 {
     public class RottingOrangesTest
     {
