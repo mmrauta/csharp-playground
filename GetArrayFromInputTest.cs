@@ -67,5 +67,26 @@ namespace csharp_playground
             Action invalidExecution = () => array[0] = 1;
             Assert.Throws<IndexOutOfRangeException>(invalidExecution);
         }
+
+        [Fact]
+        public void ArraysAreRowMajor()
+        {
+            var myArray = new int[2, 3]
+            {
+                {1, 2, 3},
+                {4, 5, 6}
+            };
+
+            int rows = myArray.GetLength(0);
+            int columns = myArray.GetLength(1);
+            Assert.Equal(2, rows);
+            Assert.Equal(3, columns);
+            Assert.Equal(1, myArray[0, 0]);
+            Assert.Equal(2, myArray[0, 1]);
+            Assert.Equal(3, myArray[0, 2]);
+            Assert.Equal(4, myArray[1, 0]);
+            Assert.Equal(5, myArray[1, 1]);
+            Assert.Equal(6, myArray[1, 2]);
+        }
     }
 }

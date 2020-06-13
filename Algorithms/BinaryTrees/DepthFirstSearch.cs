@@ -48,50 +48,8 @@ namespace Algorithms.BinaryTrees
             Console.Write(node.Value);
         }
 
-        public static TreeNode TreeOne { get; set; } = BuildTreeOne();
+        public static TreeNode TreeOne { get; set; } = TreeNode.BuildTreeOne();
 
-        public static TreeNode TreeTwo { get; set; } = BuildTreeTwo();
-
-        /*
-         *      5
-         *     / \
-         *    3   7
-         *   /   /
-         *  1   6
-         */
-        public static TreeNode BuildTreeOne()
-        {
-            var treeOne = new TreeNode(5)
-            {
-                Left = new TreeNode(3),
-                Right = new TreeNode(7)
-            };
-
-            treeOne.Left.Left = new TreeNode(1);
-            treeOne.Right.Left = new TreeNode(6);
-
-            return treeOne;
-        }
-
-        /*
-         *      3
-         *     / \
-         *    1   6
-         *       / \
-         *      5   7
-         */
-        public static TreeNode BuildTreeTwo()
-        {
-            var treeTwo = new TreeNode(3)
-            {
-                Left = new TreeNode(1),
-                Right = new TreeNode(6)
-            };
-
-            treeTwo.Right.Left = new TreeNode(5);
-            treeTwo.Right.Right = new TreeNode(7);
-
-            return treeTwo;
-        }
+        public static TreeNode TreeTwo { get; set; } = TreeNode.BuildTreeTwo();
     }
 }
