@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Algorithms;
 using Xunit;
 
 namespace csharp_playground
@@ -69,7 +70,7 @@ namespace csharp_playground
         }
 
         [Fact]
-        public void ArraysAreRowMajor()
+        public void MultiDimensionalArrays()
         {
             var myArray = new int[2, 3]
             {
@@ -79,6 +80,10 @@ namespace csharp_playground
 
             int rows = myArray.GetLength(0);
             int columns = myArray.GetLength(1);
+
+            Assert.Equal(new []{1,2,3}, Helpers<int>.GetRow(myArray, 0));
+            Assert.Equal(new []{3,6}, Helpers<int>.GetColumn(myArray, 2));
+
             Assert.Equal(2, rows);
             Assert.Equal(3, columns);
             Assert.Equal(1, myArray[0, 0]);

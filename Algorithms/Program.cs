@@ -7,8 +7,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("DFS");
+            Console.WriteLine("DFS Binary Tree");
 
             Console.WriteLine();
             Console.WriteLine("Preorder");
@@ -27,6 +26,16 @@ namespace Algorithms
             DepthFirstSearch.PostorderTraversal(DepthFirstSearch.TreeOne);
             Console.WriteLine();
             DepthFirstSearch.PostorderTraversal(DepthFirstSearch.TreeTwo);
+
+            Console.WriteLine();
+            Console.WriteLine("DFS Graph");
+            Console.WriteLine();
+            Graphs.DepthFirstSearch.Run(Graphs.DepthFirstSearch.ExampleGraph);
+
+            Console.WriteLine();
+            Console.WriteLine("BFS Graph");
+            Console.WriteLine();
+            Graphs.BreadthFirstSearch.Run(Graphs.BreadthFirstSearch.ExampleGraph);
 
         }
     }
