@@ -3,13 +3,14 @@
 namespace Algorithms.Sort
 {
     /// <summary>
-    /// O(nlogn) - average case running time
-    /// O(n^2) - worst case running time
-    /// In-place algorithm
+    /// QuickSort is an in-place algorithm/
+    /// Time complexity:
+    ///     O(nlogn) - average case
+    ///     O(n^2) - worst case
     /// </summary>
     public static class QuickSort
     {
-        public static int[] Sort(int[] array)
+        public static int[] Run(int[] array)
         {
             if (array is null)
                 return new int[]{};
@@ -20,43 +21,50 @@ namespace Algorithms.Sort
             return Sort(array, 0, array.Length - 1);
         }
 
-        public static int[] Sort(int[] array, int leftIndex, int rightIndex)
+        private static int[] Sort(int[] array, int leftIndex, int rightIndex)
         {
-            if (leftIndex < rightIndex)                         // there is at least one item between right and left index
+            if (leftIndex < rightIndex)                         // if there is at least one item between right and left index
             {
                 int pivotIndex = Partition(array, leftIndex, rightIndex);
                 Sort(array, leftIndex, pivotIndex - 1);
-                Sort(array, pivotIndex+1, rightIndex);
+                Sort(array, pivotIndex + 1, rightIndex);
             }
 
             return array;
         }
 
         /// <summary>
-        /// Partitions the collection by selecting random pivot item
+        /// Partitions the collection by selecting random pivot item.
+        /// Ensures items lower then pivot are on the left and bigger items are on the right from pivot.
         /// </summary>
-        /// <param name="array">input array</param>
-        /// <param name="leftIndex">start index of the elements to partitions</param>
-        /// <param name="rightIndex">end index of the elements to partitions</param>
-        /// <returns>partition index</returns>
+        /// <returns>pivot index</returns>
         private static int Partition(int[] array, int leftIndex, int rightIndex)
         {
-            var pivotIndex = GetPivotIndex(leftIndex, rightIndex);
-            var pivotValue = array[pivotIndex];
+            var pivotValue = SetPivotOnLeftIndex(array, leftIndex, rightIndex);     // pivot value is now in the leftIndex position
 
-            Swap(array, leftIndex, pivotIndex);         // now pivot value is at the beginning of the array
-            var partitionIndex = leftIndex + 1;                 // start testing each element after the pivot value
-            for (var i = partitionIndex; i <= rightIndex; i++)
-            {
-                if (array[i] <= pivotValue)                         // if current item is lower than pivot item
+            var partitionIndex = leftIndex + 1;                 // partitionIndex always points just after the last item lower (or equal to) pivot
+
+            for (var i = leftIndex + 1; i <= rightIndex; i++)   // iterator and partitionIndex start at the same position (one after the pivot)
+                if (array[i] <= pivotValue)                     // if current item is lower than pivot value
                 {
-                    Swap(array, i, partitionIndex);
-                    partitionIndex++;
+                    Swap(array, i, partitionIndex);             // move current item just after the last item lower (or equal to) pivot
+                    partitionIndex++;                           // we have 1 more item on the left, so we have to move partitionIndex by 1 position
                 }
-            }
 
-            Swap(array, leftIndex, partitionIndex-1);  // swap last lower then pivot item with the pivot value
-            return partitionIndex-1; 
+            Swap(array, leftIndex, partitionIndex - 1);         // swap the last lower then pivot item with the pivot value
+            return partitionIndex - 1;                          // return index of the pivot value
+        }
+
+        /// <summary>
+        /// Finds pivot value (random item within a range) and sets it as first in an array
+        /// </summary>
+        /// <returns>pivot value</returns>
+        private static int SetPivotOnLeftIndex(int[] array, int leftIndex, int rightIndex)
+        {
+            var pivotIndex = GetRandomIndex(leftIndex, rightIndex);
+            var pivotValue = array[pivotIndex];
+            Swap(array, leftIndex, pivotIndex);
+            return pivotValue;
         }
 
         private static void Swap(int[] array, int index1, int index2)
@@ -69,7 +77,7 @@ namespace Algorithms.Sort
             array[index2] = temp;
         }
 
-        private static int GetPivotIndex(int leftIndex, int rightIndex)
+        private static int GetRandomIndex(int leftIndex, int rightIndex)
         {
             var random = new Random();
             var pivotiIndex = random.Next(leftIndex, rightIndex);
