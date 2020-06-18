@@ -23,7 +23,7 @@ namespace Algorithms.Sort
 
         private static int[] Sort(int[] array, int leftIndex, int rightIndex)
         {
-            if (leftIndex < rightIndex)                         // if there is at least one item between right and left index
+            if (leftIndex < rightIndex)
             {
                 int pivotIndex = Partition(array, leftIndex, rightIndex);
                 Sort(array, leftIndex, pivotIndex - 1);
