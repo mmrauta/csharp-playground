@@ -34,15 +34,14 @@ namespace Algorithms.Graphs
             var G = new GraphNode("G");
             var H = new GraphNode("H");
 
-            A.Adjacent = new List<GraphNode> { B, C, D, E};
+            A.Adjacent = new List<GraphNode> { B, C, D, E };
             B.Adjacent = new List<GraphNode> { A, C, G };
-            C.Adjacent = new List<GraphNode> { A, B, D};
-            D.Adjacent = new List<GraphNode> { A,C,E,H };
-            E.Adjacent = new List<GraphNode> { A,D,F};
-            F.Adjacent = new List<GraphNode> { E,G,H };
-            G.Adjacent = new List<GraphNode> { B,F };
+            C.Adjacent = new List<GraphNode> { A, B, D };
+            D.Adjacent = new List<GraphNode> { A, C , E, H };
+            E.Adjacent = new List<GraphNode> { A, D, F};
+            F.Adjacent = new List<GraphNode> { E, G, H };
+            G.Adjacent = new List<GraphNode> { B, F };
             H.Adjacent = new List<GraphNode> { D, F};
-
 
             return A;
         }

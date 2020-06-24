@@ -5,7 +5,7 @@ namespace Algorithms.BinaryTrees
     /// <summary>
     /// n - number of nodes; h - height of a tree
     /// Time Complexity: O(n)
-    /// Space Complexity: O(h); Worst: O(n); Average: O(log{2}n)
+    /// Space Complexity: O(h); Worst: O(n); Average: O(logn)
     /// </summary>
     public static class DepthFirstSearch
     {
@@ -20,9 +20,8 @@ namespace Algorithms.BinaryTrees
         }
 
         /// <summary>
-        /// Inorder traversal of a binary search tree returns sorted elements
+        /// Inorder traversal of a binary SEARCH tree returns sorted elements
         /// </summary>
-        /// <param name="node"></param>
         public static void InorderTraversal(TreeNode node)
         {
             if (node == null)
@@ -47,9 +46,5 @@ namespace Algorithms.BinaryTrees
         {
             Console.Write(node.Value);
         }
-
-        public static TreeNode TreeOne { get; set; } = TreeNode.BuildTreeOne();
-
-        public static TreeNode TreeTwo { get; set; } = TreeNode.BuildTreeTwo();
     }
 }

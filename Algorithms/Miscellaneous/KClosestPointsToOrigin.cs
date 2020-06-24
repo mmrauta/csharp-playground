@@ -31,15 +31,6 @@ namespace Algorithms.Miscellaneous
             return kTop;
         }
 
-        private static int PointsDistanceComparator((int distance, int[] point) one, (int distance, int[] point) two)
-        {
-            if (one.distance == two.distance)
-                return 0;
-            if (one.distance > two.distance)
-                return 1;
-            return -1;
-        }
-
         public static int[,] GetKClosest(int[,] points, int k)
         {
             if (points == null || points.Length == 0)
@@ -73,6 +64,15 @@ namespace Algorithms.Miscellaneous
             }
 
             return result;
+        }
+
+        private static int PointsDistanceComparator((int distance, int[] point) one, (int distance, int[] point) two)
+        {
+            if (one.distance == two.distance)
+                return 0;
+            if (one.distance > two.distance)
+                return 1;
+            return -1;
         }
     }
 }

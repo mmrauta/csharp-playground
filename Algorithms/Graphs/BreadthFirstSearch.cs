@@ -10,23 +10,26 @@ namespace Algorithms.Graphs
 
         public static void Run(GraphNode start)
         {
-            var queue= new Queue<GraphNode>();
-            var processedNodes = new HashSet<GraphNode>();
+            if (start == null)
+                return;
+
+            var queue = new Queue<GraphNode>();
+            var processed = new HashSet<GraphNode>();
 
             queue.Enqueue(start);
 
             while (queue.Any())
             {
                 var current = queue.Dequeue();
-                if (!processedNodes.Contains(current))
-                {
-                    processedNodes.Add(current);
-                    ProcessNode(current);
-                }
+                if (processed.Contains(current))
+                    continue;
 
-                foreach (var node in current.Adjacent)
-                    if (!processedNodes.Contains(node))
-                        queue.Enqueue(node);
+                processed.Add(current);
+                ProcessNode(current);
+
+                foreach (var neighbour in current.Adjacent)
+                    if (!processed.Contains(neighbour))
+                        queue.Enqueue(neighbour);
             }
         }
 

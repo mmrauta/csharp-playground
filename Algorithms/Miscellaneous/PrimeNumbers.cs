@@ -2,6 +2,7 @@
 {
     public static class PrimeNumbers
     {
+        /// Time Complexity: O(sqrt(n))
         public static bool IsPrime(int n)
         {
             if (n < 2)

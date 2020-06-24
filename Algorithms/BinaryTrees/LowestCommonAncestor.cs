@@ -26,14 +26,10 @@
             var rightSearchResult = Get(root.Right, x, y);
 
             if (leftSearchResult == null)
-            {
                 return rightSearchResult;
-            }
 
             if (rightSearchResult == null)
-            {
                 return leftSearchResult;
-            }
 
             return root;
         }

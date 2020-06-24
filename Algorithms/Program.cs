@@ -1,9 +1,10 @@
-﻿using System;
-using Algorithms.BinaryTrees;
+﻿using Algorithms.BinaryTrees;
+using Algorithms.Graphs;
+using System;
 
 namespace Algorithms
 {
-    class Program
+    public static class Program
     {
         static void Main(string[] args)
         {
@@ -11,26 +12,30 @@ namespace Algorithms
 
             Console.WriteLine();
             Console.WriteLine("Preorder");
-            DepthFirstSearch.PreorderTraversal(DepthFirstSearch.TreeOne);
+            BinaryTrees.DepthFirstSearch.PreorderTraversal(TreeNode.BuildTreeOne());
             Console.WriteLine();
-            DepthFirstSearch.PreorderTraversal(DepthFirstSearch.TreeTwo);
+            BinaryTrees.DepthFirstSearch.PreorderTraversal(TreeNode.BuildTreeTwo());
 
             Console.WriteLine();
             Console.WriteLine("Inorder");
-            DepthFirstSearch.InorderTraversal(DepthFirstSearch.TreeOne);
+            BinaryTrees.DepthFirstSearch.InorderTraversal(TreeNode.BuildTreeOne());
             Console.WriteLine();
-            DepthFirstSearch.InorderTraversal(DepthFirstSearch.TreeTwo);
+            BinaryTrees.DepthFirstSearch.InorderTraversal(TreeNode.BuildTreeTwo());
 
             Console.WriteLine();
             Console.WriteLine("Postorder");
-            DepthFirstSearch.PostorderTraversal(DepthFirstSearch.TreeOne);
+            BinaryTrees.DepthFirstSearch.PostorderTraversal(TreeNode.BuildTreeOne());
             Console.WriteLine();
-            DepthFirstSearch.PostorderTraversal(DepthFirstSearch.TreeTwo);
+            BinaryTrees.DepthFirstSearch.PostorderTraversal(TreeNode.BuildTreeTwo());
+
+            Console.WriteLine();
+            Console.WriteLine("BFS Binary Tree");
+            BinaryTrees.BreadthFirstSearch.Traversal(TreeNode.BuildTreeTwo());
 
             Console.WriteLine();
             Console.WriteLine("DFS Graph");
             Console.WriteLine();
-            Graphs.DepthFirstSearch.Run(Graphs.DepthFirstSearch.ExampleGraph);
+            Graphs.DepthFirstSearch.Run(GraphNode.BuildGraphOne());
 
             Console.WriteLine();
             Console.WriteLine("BFS Graph");
