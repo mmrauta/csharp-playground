@@ -1,4 +1,3 @@
-using Algorithms.BinaryTrees;
 using Algorithms.Strings;
 using Xunit;
 
